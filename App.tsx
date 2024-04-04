@@ -17,6 +17,11 @@ export default function App() {
   const [endereco, setendereco] = React.useState('');
   //checkbox
   const [checkbox, setcheck] = useState(false);
+  //validar 
+  const v_idade = (parseInt(idade)) => {
+    const temp_idade = parseInt(idade)
+    if (temp_idade < 18)
+  }
   return (
     <View style={styles.container}>
       <TextInput onChangeText={setnome} value={nome} placeholder='Digite Seu Nome'/>
