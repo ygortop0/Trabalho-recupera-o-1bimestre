@@ -18,10 +18,8 @@ export default function App() {
   //checkbox
   const [checkbox, setcheck] = useState(false);
   //validar 
-  const v_idade = (parseInt(idade)) => {
-    const temp_idade = parseInt(idade)
-    if (temp_idade < 18)
-  }
+  const v_idade = parseInt(idade);
+
   return (
     <View style={styles.container}>
       <TextInput onChangeText={setnome} value={nome} placeholder='Digite Seu Nome'/>
@@ -30,9 +28,11 @@ export default function App() {
       <TextInput onChangeText={setcelular} value={celular} placeholder='Digite Seu celular'/>
       <TextInput onChangeText={settelefone} value={telefone} placeholder='Digite Seu telefone'/>
       <TextInput onChangeText={setendereco} value={endereco} placeholder='Digite Seu endereco'/>
-      <TextInput onChangeText={setidade} value={idade}  keyboardType='numeric' placeholder='Digite sua idade:'/>
+      <TextInput onChangeText={setidade} value={idade} keyboardType='numeric' placeholder='Digite sua idade:'/>
       <Checkbox value={checkbox} onValueChange={setcheck}/>
       <Text>test</Text>
+      <Text>{v_idade}</Text>
+      {v_idade < 18}
       <StatusBar style="auto" />
     </View>
   );
