@@ -22,14 +22,21 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TextInput onChangeText={setnome} value={nome} placeholder='Digite Seu Nome'/>
-      <TextInput onChangeText={setRG} value={RG} placeholder='Digite Seu RG'/>
-      <TextInput onChangeText={setEmail} value={Email} placeholder='Digite Seu Email'/>
-      <TextInput onChangeText={setcelular} value={celular} placeholder='Digite Seu celular'/>
-      <TextInput onChangeText={settelefone} value={telefone} placeholder='Digite Seu telefone'/>
-      <TextInput onChangeText={setendereco} value={endereco} placeholder='Digite Seu endereco'/>
+      <Text>Digite Seu Nome:</Text>
+      <TextInput onChangeText={setnome} value={nome} placeholder='Seu Nome'/>
+      <Text>Digite Sua Idade:</Text>
       <TextInput onChangeText={setidade} value={idade} keyboardType='numeric' placeholder='Digite sua idade:'/>
-      <Checkbox value={checkbox} onValueChange={setcheck}/>
+      <Text>Digite Seu RG:</Text>
+      <TextInput onChangeText={setRG} value={RG} placeholder='Digite Seu RG'/>
+      <Text>Digite Seu Email:</Text>
+      <TextInput onChangeText={setEmail} value={Email} placeholder='email@exemplo.com'/>
+      <Text>Digite Seu Numero de Celular:</Text>
+      <TextInput onChangeText={setcelular} value={celular} placeholder='(11) 999999999' keyboardType='numeric'/>
+      <Text>Digite Seu Numero de Telefone:</Text>
+      <TextInput onChangeText={settelefone} value={telefone} placeholder='(11) 99999999' keyboardType='numeric'/>
+      <Text>Digite seu Endereço:</Text>
+      <TextInput onChangeText={setendereco} value={endereco} placeholder='Rua exemplo 101'/>
+      <Checkbox value={checkbox} onValueChange={setcheck} />
       <Text>test</Text>
       <Text>{v_idade}</Text>
       {v_idade < 18}
