@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TextInput, View, ScrollView } from "react-native";
+import { TextInputMask } from "react-native-masked-text";
 
 export default function App() {
   //variavel para os registros
@@ -58,20 +59,34 @@ export default function App() {
         />
 
         <Text style={styles.texto}>Celular:</Text>
-        <TextInput
+        <TextInputMask
+          type={'cel-phone'}
           style={styles.textoConteudo}
           onChangeText={setcelular}
           value={celular}
           placeholder="(11) 9 9999-9999"
           keyboardType="numeric"
+          options={{
+            maskType: 'BRL',
+            withDDD: true,
+            dddMask:'(99) '
+          }}
         />
-        <Text style={styles.texto}>Telefone:</Text>
-        <TextInput
+        <Text style={styles.texto}>Telefone fixo:</Text>
+        <TextInputMask
           style={styles.textoConteudo}
           onChangeText={settelefone}
           value={telefone}
           placeholder="(11) 9999-9999"
           keyboardType="numeric"
+          //mascara
+          type={'custom'}
+          options={{
+            maskType: 'BRL',
+            withDDD: true,
+            mask: '(99) 9999-9999'
+            //Não acresentei a obrigatoriedade do +55 pois duvido que um aluno da etec tenha um numero fora do brasil
+          }}
         />
         <Text style={styles.texto}>Endereço:</Text>
         <TextInput
@@ -90,10 +105,6 @@ export default function App() {
           <Text>Enfermagem</Text>
           <Checkbox value={checkbox} onValueChange={setcheck} />
         </View>
-
-        <Text style={styles.texto}>{v_idade}</Text>
-        {v_idade < 18}
-        <StatusBar style="auto" />
       </View>
     </ScrollView>
   );
