@@ -1,59 +1,129 @@
-import React, { useState } from 'react';
-import Checkbox from 'expo-checkbox';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-
-
-
+import React, { useState } from "react";
+import Checkbox from "expo-checkbox";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, TextInput, View, ScrollView } from "react-native";
 
 export default function App() {
-  //variavel para os registros 
-  const [RG, setRG] = React.useState('');
-  const [nome, setnome] = React.useState('');
-  const [idade, setidade] = React.useState('');
-  const [celular, setcelular] = React.useState('');
-  const [telefone, settelefone] = React.useState('');
-  const [Email, setEmail] = React.useState('');
-  const [endereco, setendereco] = React.useState('');
+  //variavel para os registros
+  const [RG, setRG] = React.useState("");
+  const [nome, setnome] = React.useState("");
+  const [idade, setidade] = React.useState("");
+  const [celular, setcelular] = React.useState("");
+  const [telefone, settelefone] = React.useState("");
+  const [Email, setEmail] = React.useState("");
+  const [endereco, setendereco] = React.useState("");
   //checkbox
   const [checkbox, setcheck] = useState(false);
-  //validar 
+  //validar
   const v_idade = parseInt(idade);
 
   return (
-    <View style={styles.container}>
-      <Text>Digite Seu Nome:</Text>
-      <TextInput onChangeText={setnome} value={nome} placeholder='Seu Nome'/>
-      <Text>Digite Sua Idade:</Text>
-      <TextInput onChangeText={setidade} value={idade} keyboardType='numeric' placeholder='Digite sua idade:'/>
-      <Text>Digite Seu RG:</Text>
-      <TextInput onChangeText={setRG} value={RG} placeholder='Digite Seu RG'/>
-      <Text>Digite Seu Email:</Text>
-      <TextInput onChangeText={setEmail} value={Email} placeholder='email@exemplo.com'/>
-      <Text>Digite Seu Numero de Celular:</Text>
-      <TextInput onChangeText={setcelular} value={celular} placeholder='(11) 999999999' keyboardType='numeric'/>
-      <Text>Digite Seu Numero de Telefone:</Text>
-      <TextInput onChangeText={settelefone} value={telefone} placeholder='(11) 99999999' keyboardType='numeric'/>
-      <Text>Digite seu Endereço:</Text>
-      <TextInput onChangeText={setendereco} value={endereco} placeholder='Rua exemplo 101'/>
-      <Checkbox value={checkbox} onValueChange={setcheck} />
-      <Text>test</Text>
-      <Text>{v_idade}</Text>
-      {v_idade < 18}
-      <StatusBar style="auto" />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.texto}>Bem vindos à </Text>
+        <Text style={styles.texto}>ETEC Jardim Angela</Text>
+        <Text></Text>
+
+        <Text style={styles.texto}>Nome:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setnome}
+          value={nome}
+          placeholder="Digite seu nome"
+        />
+
+        <Text style={styles.texto}>Idade:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setidade}
+          value={idade}
+          keyboardType="numeric"
+          placeholder="Digite sua idade"
+        />
+
+        <Text style={styles.texto}>RG:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setRG}
+          value={RG}
+          placeholder="Digite Seu RG"
+        />
+
+        <Text style={styles.texto}>E-mail:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setEmail}
+          value={Email}
+          placeholder="email@exemplo.com"
+        />
+
+        <Text style={styles.texto}>Celular:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setcelular}
+          value={celular}
+          placeholder="(11) 9 9999-9999"
+          keyboardType="numeric"
+        />
+        <Text style={styles.texto}>Telefone:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={settelefone}
+          value={telefone}
+          placeholder="(11) 9999-9999"
+          keyboardType="numeric"
+        />
+        <Text style={styles.texto}>Endereço:</Text>
+        <TextInput
+          style={styles.textoConteudo}
+          onChangeText={setendereco}
+          value={endereco}
+          placeholder="Digite se endereço"
+        />
+
+        <View>
+          <Text style={styles.texto}>Selecione o curso desejado:</Text>
+          <Text>Administração</Text>
+          <Checkbox value={checkbox} onValueChange={setcheck} />
+          <Text>Desenvolvimento de Sistemas</Text>
+          <Checkbox value={checkbox} onValueChange={setcheck} />
+          <Text>Enfermagem</Text>
+          <Checkbox value={checkbox} onValueChange={setcheck} />
+        </View>
+
+        <Text style={styles.texto}>{v_idade}</Text>
+        {v_idade < 18}
+        <StatusBar style="auto" />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    marginTop: 20,
+    backgroundColor: "#f2f2f2",
   },
+
+  texto: {
+    fontSize: 18,
+    marginTop: 5,
+    color: "#000",
+  },
+
+  textoConteudo: {
+    width: "100%",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    borderWidth: 1,
+    marginTop: 5,
+    padding: 8,
+  },
+
   org_chkbox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  }
+    flexDirection: "row",
+    alignItems: "center",
+  },
 });
