@@ -15,9 +15,17 @@ export default function App() {
   const [endereco, setendereco] = React.useState("");
   //checkbox
   const [checkbox, setcheck] = useState(false);
-  //validar
-  const v_idade = parseInt(idade);
-
+  //validar idade
+  function vld_idade(idade) {
+    if (idade === '') {
+      return null;
+    } else if (idade < 18) {
+      return 'Você não tem idade suficiente para o curso!';
+    } else {
+      return '';
+    }
+  }
+  
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -31,7 +39,7 @@ export default function App() {
           onChangeText={setnome}
           value={nome}
           placeholder="Digite seu nome"
-        />
+          />
 
         <Text style={styles.texto}>Idade:</Text>
         <TextInput
@@ -40,15 +48,15 @@ export default function App() {
           value={idade}
           keyboardType="numeric"
           placeholder="Digite sua idade"
-        />
-
+          />
+        
         <Text style={styles.texto}>RG:</Text>
         <TextInput
           style={styles.textoConteudo}
           onChangeText={setRG}
           value={RG}
           placeholder="Digite Seu RG"
-        />
+          />
 
         <Text style={styles.texto}>E-mail:</Text>
         <TextInput
@@ -56,7 +64,7 @@ export default function App() {
           onChangeText={setEmail}
           value={Email}
           placeholder="email@exemplo.com"
-        />
+          />
 
         <Text style={styles.texto}>Celular:</Text>
         <TextInputMask
@@ -71,7 +79,7 @@ export default function App() {
             withDDD: true,
             dddMask:'(99) '
           }}
-        />
+          />
         <Text style={styles.texto}>Telefone fixo:</Text>
         <TextInputMask
           style={styles.textoConteudo}
@@ -87,14 +95,14 @@ export default function App() {
             mask: '(99) 9999-9999'
             //Não acresentei a obrigatoriedade do +55 pois duvido que um aluno da etec tenha um numero fora do brasil
           }}
-        />
+          />
         <Text style={styles.texto}>Endereço:</Text>
         <TextInput
           style={styles.textoConteudo}
           onChangeText={setendereco}
           value={endereco}
           placeholder="Digite se endereço"
-        />
+          />
 
         <View>
           <Text style={styles.texto}>Selecione o curso desejado:</Text>
@@ -105,6 +113,9 @@ export default function App() {
           <Text>Enfermagem</Text>
           <Checkbox value={checkbox} onValueChange={setcheck} />
         </View>
+        
+        <Text style={styles.textoErro}>{vld_idade(idade)}</Text>
+    
       </View>
     </ScrollView>
   );
@@ -117,11 +128,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: "#f2f2f2",
   },
-
+  
   texto: {
     fontSize: 18,
     marginTop: 5,
     color: "#000",
+  },
+
+  textoErro: {
+    fontSize: 18,
+    marginTop: 5,
+    color: "red",
   },
 
   textoConteudo: {
