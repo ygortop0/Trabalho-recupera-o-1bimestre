@@ -14,17 +14,35 @@ export default function App() {
   const [Email, setEmail] = React.useState("");
   const [endereco, setendereco] = React.useState("");
   //checkbox
-  const [checkbox, setcheck] = useState(false);
-  //validar coisas
+  const [ckboxADM, setckboxADM,] = useState(false);
+  const [ckboxDS, setckboxDS] = useState(false);
+  const [ckboxENF, setckboxENF] = useState(false);
 
+
+  //validar coisas
   function btn_enviar() {
     if (parseInt(idade) < 18){
-      return Alert.alert('Você não tem idade suficiente para o curso!');
+      return Alert.alert(
+        //titulo
+        'Idade Inválida!',
+      //corpo
+      'Você não tem idade suficiente para o curso!'
+      );
     } else {
       if (RG === '' || nome === '' || celular === '' || telefone === '' || Email === '' || endereco === '') {
-        Alert.alert('Existe campos invalidos!');
-      } else {
-        Alert.alert('Sucesso!');
+        Alert.alert(
+          'Existe campos invalidos!',
+        'Porfavor preencha os campos necessarios'
+      );
+      } else if (ckboxADM == false && ckboxDS == false && ckboxENF == false){
+        return Alert.alert('Curso não assinalado!',
+          'Porfavor assinale pelo menos um curso'
+        );
+      }else{
+        Alert.alert(
+          'Sucesso!',
+          'Você está cadastrado!'
+        );
       }
     }
   }
@@ -108,16 +126,22 @@ export default function App() {
           placeholder="Digite se endereço"
           />
 
+        {/* //espaçamento */}
+        <Text></Text>
+
         <View>
           <Text style={styles.texto}>Selecione o curso desejado:</Text>
+          <Text></Text>
           <Text>Administração</Text>
-          <Checkbox value={checkbox} onValueChange={setcheck} />
+          <Checkbox value={ckboxADM} onValueChange={setckboxADM} />
           <Text>Desenvolvimento de Sistemas</Text>
-          <Checkbox value={checkbox} onValueChange={setcheck} />
+          <Checkbox value={ckboxDS} onValueChange={setckboxDS} />
           <Text>Enfermagem</Text>
-          <Checkbox value={checkbox} onValueChange={setcheck} />
+          <Checkbox value={ckboxENF} onValueChange={setckboxENF} />
         </View>
         
+        <Text></Text>
+          
         <Button onPress={btn_enviar} title="enviar"></Button>
     
       </View>
