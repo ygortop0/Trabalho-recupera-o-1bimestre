@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TextInput, View, ScrollView, Button, Alert } from "react-native";
+import { StyleSheet, Text, TextInput, View, ScrollView, Button, Alert, TouchableOpacity } from "react-native";
 import { TextInputMask } from "react-native-masked-text";
 
 export default function App() {
@@ -142,8 +142,12 @@ export default function App() {
         
         <Text></Text>
           
-        <Button onPress={btn_enviar} title="enviar"></Button>
-    
+          <TouchableOpacity style={styles.btn_enviar}  activeOpacity={0.8} onPress={btn_enviar}>
+            <Text style={styles.txt_btn_enviar}>Enviar</Text>
+          </TouchableOpacity>
+
+
+          <Text></Text>
       </View>
     </ScrollView>
   );
@@ -182,4 +186,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  btn_enviar: {
+    backgroundColor: 'black',
+    width: 'auto',
+    // NAO USAR height
+    paddingVertical: '2.5%',
+    alignItems: 'center',
+    borderRadius: 4
+  },
+  txt_btn_enviar: {
+    color: 'white'
+  }
 });
