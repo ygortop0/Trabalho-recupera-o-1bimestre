@@ -86,6 +86,8 @@ export default function App() {
           onChangeText={setEmail}
           value={Email}
           placeholder="email@exemplo.com"
+          keyboardType="email-address"
+          autoComplete="email"
           />
 
         <Text style={styles.texto}>Celular:</Text>
