@@ -130,14 +130,19 @@ export default function App() {
         <Text></Text>
 
         <View>
-          <Text style={styles.texto}>Selecione o curso desejado:</Text>
-          <Text></Text>
-          <Text>Administração</Text>
-          <Checkbox value={ckboxADM} onValueChange={setckboxADM} />
-          <Text>Desenvolvimento de Sistemas</Text>
-          <Checkbox value={ckboxDS} onValueChange={setckboxDS} />
-          <Text>Enfermagem</Text>
-          <Checkbox value={ckboxENF} onValueChange={setckboxENF} />
+          <Text style={styles.textockbox}>Selecione o curso desejado:</Text>
+          <View style={styles.juntar_ckbox}>
+            <Checkbox value={ckboxADM} onValueChange={setckboxADM} color={ckboxADM ? 'black' : undefined}style={{margin: 8}}/>
+            <Text>Administração</Text>
+          </View>
+          <View style={styles.juntar_ckbox}>
+            <Checkbox value={ckboxDS} onValueChange={setckboxDS} color={ckboxDS ? 'black' : undefined}style={{margin: 8}}/>
+            <Text>Desenvolvimento de Sistemas </Text>
+          </View>
+          <View style={styles.juntar_ckbox}>
+            <Checkbox value={ckboxENF} onValueChange={setckboxENF} color={ckboxENF ? 'black' : undefined} style={{margin: 8}}/>
+            <Text>Enfermagem </Text>
+          </View>
         </View>
         
         <Text></Text>
@@ -165,6 +170,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 5,
     color: "#000",
+  },
+  textockbox: {
+    fontSize: 18,
+    marginTop: 5,
+    color: "#000",
+    margin: 8
   },
 
   textoErro: {
@@ -196,5 +207,9 @@ const styles = StyleSheet.create({
   },
   txt_btn_enviar: {
     color: 'white'
+  },
+  juntar_ckbox:{
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 });
