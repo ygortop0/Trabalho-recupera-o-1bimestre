@@ -18,22 +18,17 @@ export default function App() {
   //validar coisas
 
   function btn_enviar() {
-    if (RG === '' || nome === '' || celular === '' || telefone === '' || Email === '' || endereco === '' || checkbox === '') {
-      Alert.alert('Existe campos invalidos!');
+    if (parseInt(idade) < 18){
+      return Alert.alert('Você não tem idade suficiente para o curso!');
     } else {
-      Alert.alert('Sucesso!');
+      if (RG === '' || nome === '' || celular === '' || telefone === '' || Email === '' || endereco === '') {
+        Alert.alert('Existe campos invalidos!');
+      } else {
+        Alert.alert('Sucesso!');
+      }
     }
   }
 
-  function vld_idade(idade) {
-    if (idade === '') {
-      return null;
-    } else if (idade < 18) {
-      return 'Você não tem idade suficiente para o curso!';
-    } else {
-      return '';
-    }
-  }
   
   return (
     <ScrollView>
