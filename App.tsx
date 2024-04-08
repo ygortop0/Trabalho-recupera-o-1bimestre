@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TextInput, View, ScrollView } from "react-native";
+import { StyleSheet, Text, TextInput, View, ScrollView, Button, Alert } from "react-native";
 import { TextInputMask } from "react-native-masked-text";
 
 export default function App() {
@@ -15,7 +15,16 @@ export default function App() {
   const [endereco, setendereco] = React.useState("");
   //checkbox
   const [checkbox, setcheck] = useState(false);
-  //validar idade
+  //validar coisas
+
+  function btn_enviar() {
+    if (RG === '' || nome === '' || celular === '' || telefone === '' || Email === '' || endereco === '' || checkbox === '') {
+      Alert.alert('Existe campos invalidos!');
+    } else {
+      Alert.alert('Sucesso!');
+    }
+  }
+
   function vld_idade(idade) {
     if (idade === '') {
       return null;
@@ -114,6 +123,7 @@ export default function App() {
           <Checkbox value={checkbox} onValueChange={setcheck} />
         </View>
         
+        <Button onPress={btn_enviar} title="enviar"></Button>
         <Text style={styles.textoErro}>{vld_idade(idade)}</Text>
     
       </View>
