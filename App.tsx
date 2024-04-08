@@ -119,7 +119,6 @@ export default function App() {
         </View>
         
         <Button onPress={btn_enviar} title="enviar"></Button>
-        <Text style={styles.textoErro}>{vld_idade(idade)}</Text>
     
       </View>
     </ScrollView>
